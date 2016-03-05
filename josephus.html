@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <script type="text/javascript">
+      $('input:text[name="title"]').val("value");
+	var queue = function(){
+		this.datas = [];
+	}	
+	queue.prototype.isEmpty = function(){
+		return this.datas.length == 0?true:false;
+	}
+	queue.prototype.length = function(){
+		return this.datas.length;
+	}
+	queue.prototype.enqueue = function(element){
+		this.datas.push(element);
+		this.print();
+	}
+
+	queue.prototype.dequeue = function(){
+		element = this.peek();
+		this.datas.shift();
+		return element;
+	}
+
+    queue.prototype.peek = function(){
+		element = this.datas[0] == undefined?null:this.datas[0];
+		return element;
+	}
+
+  function josephus(n, m){
+		for(int i=1; i<=n; i++){
+		q.push(i);
+	}
+	printf("<");
+	for(int i=0; i<n-1; i++){
+		for(int j=0; j<m-1; j++){
+			q.push(q.front());
+			q.pop();
+		}
+		printf("%d, " ,q.front());
+		q.pop();
+	}
+	printf("%d, ",q.front());
+	return 0;
+  }
+
+  </script>
+ </head>
+ <body>
+  사람 수 : <input type="number" name="peopleNum"/></br>
+  이제 순서대로 <input type="number" name="orderNum" />번째 사람을 제거한다. 
+ </body>
+</html>
+
