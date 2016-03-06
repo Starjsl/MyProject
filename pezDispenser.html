@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript">
+  function Stack(){
+	this.dataStore = [];
+	this.top = 0;
+	this.push = push;
+	this.pop = pop;
+	this.peek = peek;
+	this.clear = clear;
+	this.length = length;
+  }
+
+  function push(element){
+	  this.dataStore[this.top++] = element;
+  }
+  function pop(){
+	return this.dataStore[--this.top];
+  }
+  function peek(){
+	return this.dataStore[this.top-1];
+  }
+  function clear(){
+	this.top = 0;
+	this.dataStore = [];
+  }
+  function length(){
+	return this.top;
+  }
+  
+  function pezGenerator(n){
+	var pezDispenser = new Array(n);
+	for (var i=0;i<pezDispenser.length;i++)
+	{
+		num = Math.floor(Math.random()*3 + 1);
+		if(num == 1) pezDispenser[i] = "red";
+		else if (num==2)pezDispenser[i] = "yellow";
+		else if (num==3)pezDispenser[i] = "white";
+	}
+	return pezDispenser;
+  }
+
+  var myPezDispenser= new pezGenerator(16);
+  console.log(myPezDispenser);
+
+  function noYellow(){
+	  var r = new Stack();
+	  var s = new Stack();
+	  var top, length;
+
+	  for (var i=myPezDispenser.length - 1; i>=0 ;i-- ){
+		  if(myPezDispenser[i] == "yellow"){ 
+			  r.push(0);
+		  }
+		  else{	
+				r.push(myPezDispenser[i]);
+		   }	
+	  }
+
+	length = r.length();
+	for (var i=0; i<length;i++ ){
+		top = r.pop();
+		s.push(top);
+	}
+	
+	return s.dataStore;
+  }
+
+  var noYellow = noYellow();
+  console.log(noYellow);
+
+  </script>
+ </head>
+ <body>
+ </body>
+</html>
